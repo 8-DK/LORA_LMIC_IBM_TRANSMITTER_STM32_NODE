@@ -1,0 +1,47 @@
+# LORA LMIC IBM TRANSMITTER STM32 NODE
+## Description 
+Hello friends. In this repo, we will see how to connect Lora node to raspberry pi 3 and then to The Things Network. Here I did not use any Lora shield or Lora hat.  Lora module RA 01 (sx1276) is simply interfaced with stm32f103 and Raspberry Pi.
+
+## Hardware Required
+ - Raspberry Pi3 (https://amzn.to/2RYDlXN)
+ - Lora Module Ra 01 (any module with sx1276)(https://amzn.to/2CyU22o).
+ - STM32 Blue pill Board (https://amzn.to/2RHHjVC)
+ - Connecting wires (https://amzn.to/2RCEd52)
+
+## Pin Connections
+| sx1276     |       Raspberry Pi |
+| -------    |     -------        |
+| 3.3V-------|-------3.3V (header pin #1) |
+|GND-------|-------GND (pin #6) |
+|MISO------|-------MISO (pin #21) |
+|MOSI------|-------MOSI (pin #19) |
+|SCK-------|--------CLK (pin #23) |
+|NSS-------|--------GPIO6 (pin #22) |
+|DIO0------|--------GPIO7 (pin #7) |
+|RST-------|---------GPIO0 (pin #11) |
+
+## Install Single Channel Packer Forwarder
+
+Dillinger uses a number of open source projects to work properly:
+
+1) install wiringpi library
+$ `sudo apt-get install wiringpi`
+
+2) clone repo
+$ `git clone https://github.com/tftelkamp/single_chan_pkt_fwd.git`
+
+3) Configure server url
+$ `cd single_chan_pkt_fwd`
+$ `nano main.cpp`
+change #define SERVER1 "54.72.145.119"  to #define SERVER1 "13.66.213.36
+$ `ctrl+x`
+
+4) compile single channel packet forwared
+$ `make`
+
+5) run program
+$ `./single_chan_pkt_fwd`
+
+## Video
+
+Video [https://youtu.be/gdWafUKgjEI](https://youtu.be/gdWafUKgjEI) 
